@@ -1,5 +1,11 @@
 language: java
+arch:
+  - amd64
+  - ppc64le
 #install: sudo apt-get -y install libc6-i386
+before_install:
+  - if [ "$TRAVIS_ARCH" = ppc64le ]; then sudo apt update; sudo apt install -y maven; fi
+
 script: mvn -V -B install
 dist: trusty
 notifications:
